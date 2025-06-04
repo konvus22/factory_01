@@ -2,6 +2,11 @@
 
 React app built with Vite.
 
+## Setup
+
+Create a `.env` file based on `.env.example` and set `VITE_API_URL` to the
+URL of your backend API.
+
 ## Scripts
 
 ```bash
