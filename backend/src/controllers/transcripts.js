@@ -11,9 +11,13 @@ exports.uploadAudio = async (req, res, next) => {
 
 exports.getTranscript = async (req, res, next) => {
   try {
-    const transcript = await services.findTranscript(req.params.id);
-    if (!transcript) return res.status(404).json({ error: 'Not found' });
-    res.json(transcript);
+  const transcript = await services.findTranscript(req.params.id);
+  if (!transcript) {
+    const error = new Error('Not found');
+    error.status = 404;
+    return next(error);
+  }
+  res.json(transcript);
   } catch (err) {
     next(err);
   }
